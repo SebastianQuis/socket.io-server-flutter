@@ -5,15 +5,15 @@ const Team = require('../models/team');
 
 const teams = new Teams();
 
-teams.addTeam( new Team('Bad Bunny') );
-teams.addTeam( new Team('Don Omar') );
-teams.addTeam( new Team('Sabrina Carpanter') );
-teams.addTeam( new Team('Wiz Khalifa') );
+teams.addTeam( new Team('Boca Juniors') );
+teams.addTeam( new Team('Flamengo') );
+teams.addTeam( new Team('Universitario') );
+teams.addTeam( new Team('Cienciano') );
 
 // console.log(teams);
 
 // Mensajes de sockets - dispositivo (usuario) que se conecta al socket!
-io.on('connection', client => {
+io.on('connection', client => { // io = todos usuarios
     console.log('Cliente conectado: ');
     
     client.emit('active-teams', teams.getTeams());
@@ -34,6 +34,12 @@ io.on('connection', client => {
         // console.log(payload);
         // io.emit('nuevo-mensaje', payload); // emite a todos 
         client.broadcast.emit('nuevo-mensaje', payload);  // emite a todos menos al que emite
+    });
+
+    client.on('vote-teams', ( payload ) => {
+        console.log(payload.id);
+        teams.voteTeam(payload.id);
+        io.emit('active-teams', teams.getTeams()); // io se refiere a todos usuarios del servidor
     });
 
 });
