@@ -48,4 +48,9 @@ io.on('connection', client => { // io = todos usuarios
         io.emit('active-teams', teams.getTeams()); // io se refiere a todos usuarios del servidor
     });
 
+    client.on('delete-team', ( payload ) => {
+        teams.deleteTeam( payload.id );
+        io.emit('active-teams', teams.getTeams()); // io se refiere a todos usuarios del servidor
+    });
+
 });
