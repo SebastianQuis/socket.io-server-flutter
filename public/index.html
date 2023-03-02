@@ -23,13 +23,17 @@
         });
 
         // EMITE MENSAJES
-        socket.emit('mensaje', { nombre: 'sebastian', id: 's001'}); 
+        // socket.emit('mensaje', { nombre: 'sebastian', id: 's001'}); 
         // socket.emit('mensaje', 'sebastian');
 
-        // ESCUCHA MENSAJES
-        socket.on('mensaje', function( payload ){
-            console.log('Escuchando :', payload);
-        }); // escuchando mensaje
+        // ESCUCHA MENSAJES - REFERENCIA A FLUTTER
+        // socket.on('mensaje', function( payload ){
+        //     console.log('Escuchando :', payload);
+        // }); // escuchando mensaje
+        
+        socket.on('nuevo-mensaje', function( payload ){ // viene del socket.js 'nuevo-mensaje'
+            console.log('Escuchando: ', payload);
+        });
     </script>
 
 </body>

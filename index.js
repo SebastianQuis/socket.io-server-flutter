@@ -1,12 +1,14 @@
+// Importaciones
 const express = require('express'); // importando express
 const path = require('path'); // importando path
 require('dotenv').config(); // establece variables de entorno
 
-const app = express(); // inicializa express, es compatible con server
+// Empezando express, compatible con server
+const app = express();
 
 // Servidor de sockets
 const server = require('http').createServer(app);
-module.exports.io = require('socket.io')(server); // exportando io
+module.exports.io = require('socket.io')(server); // exportando con variable io
 require('./sockets/socket.js'); // llamar a socket.js === ./
 
 
