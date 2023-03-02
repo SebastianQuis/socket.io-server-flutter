@@ -36,9 +36,15 @@ io.on('connection', client => { // io = todos usuarios
         client.broadcast.emit('nuevo-mensaje', payload);  // emite a todos menos al que emite
     });
 
-    client.on('vote-teams', ( payload ) => {
-        console.log(payload.id);
+    client.on('vote-team', ( payload ) => {
+        // console.log(payload.id);
         teams.voteTeam(payload.id);
+        io.emit('active-teams', teams.getTeams()); // io se refiere a todos usuarios del servidor
+    });
+    
+    client.on('add-team', ( payload ) => {
+        const newTeam = new Team( payload.nombre );
+        teams.addTeam( newTeam );
         io.emit('active-teams', teams.getTeams()); // io se refiere a todos usuarios del servidor
     });
 
