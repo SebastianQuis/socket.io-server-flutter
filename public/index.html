@@ -29,11 +29,17 @@
         // ESCUCHA MENSAJES - REFERENCIA A FLUTTER
         // socket.on('mensaje', function( payload ){
         //     console.log('Escuchando :', payload);
-        // }); // escuchando mensaje
+        // });
         
         socket.on('nuevo-mensaje', function( payload ){ // viene del socket.js 'nuevo-mensaje'
             console.log('Escuchando: ', payload);
         });
+
+        socket.on('active-teams', function( payload ) {
+            console.clear();
+            console.table( payload );
+        });
+
     </script>
 
 </body>

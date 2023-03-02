@@ -1,13 +1,14 @@
+
 const { v4: uuidV4 } = require('uuid');
 
-class Band {
+class Team {
 
     constructor( nombre = 'no-name' ) {
         
-        this.id = uuidV4.v4(); // uuid identificador unico
+        this.id = uuidV4(); // uuid identificador unico
         this.nombre = nombre;
         this.votos = 0;
     }
 }
 
-module.exports =  Band;
+module.exports = Team;
