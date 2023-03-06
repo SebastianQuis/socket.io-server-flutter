@@ -11,4 +11,5 @@ class Team {
     }
 }
 
+// exportando archivo team.js
 module.exports = Team;

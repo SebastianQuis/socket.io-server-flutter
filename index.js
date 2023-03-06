@@ -19,6 +19,6 @@ app.use( express.static( publicPath )); // express utiliza el app publico
 
 // iniciar con express
 server.listen( process.env.PORT, (err) => {
-    if ( err ) throw new Error(err); // ver el error si es que lo hay
+    if ( err ) throw new Error(err); // ver el error si es que hay
     console.log('Servidor corriendo en puerto', process.env.PORT);
 });
